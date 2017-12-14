@@ -1,0 +1,49 @@
+
+h1{
+	font-size: -webkit-xxx-large;
+    color: #cc5353;
+    text-align: center;
+    padding: 20px;
+}
+h2{
+	font-size:30px;
+	display:inline-block;
+
+}
+
+}
+nav{
+	text-align: center;
+}
+
+.gameboxes{
+	width: 80%;
+    height: 80%;
+    margin: 0 auto;
+	padding:20px;
+}
+
+.boxes{
+	border:2px solid blue;
+	width: 30%;
+	height:21vh;
+	text-align: center;
+	display:inline-block;
+	margin:-3px;
+	border-top: none;
+
+}
+
+.p1clicked{
+	background:yellow;
+	font-size:220px;
+	text-align:center;
+	margin-bottom:;
+}
+
+.p2clicked{
+	background:pink;
+	font-size:220px;
+	text-align:center;
+
+}
