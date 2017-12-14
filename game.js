@@ -20,61 +20,61 @@ function checkForWinner(){
 
 	for(var i=0;i<3;i++){
 
-		if(boxes[i]===boxes[i+3] && boxes[i+3] === boxes[i+6]){
-
-			console.log	('boxes[i]' + ' wins!');
+		if(boxes[i]!== undefined && boxes[i]===boxes[i+3] && boxes[i+3] === boxes[i+6]){
+ 
+			console.log	(boxes[i] + ' wins!');
 		}
 	}
-}
+
 	for(var i=0;i<boxes.length +1;i+=3){
 
- 		if (boxes[i] === boxes[i+1] && boxes[i+1] === boxes[i+2]) {
- 			console.log('player ' + boxes[i] + ' wins!')
+ 		if (boxes[i]!== undefined&&boxes[i] === boxes[i+1] && boxes[i+1] === boxes[i+2]) {
+ 			console.log(boxes[i] + ' wins!')
  		}
  	}
 
  	for(var i=0;i<3;i+=2){
 
- 		if(boxes[i]===boxes[i+4]&&boxes[i+4]===boxes[i+8]){
+ 		if(boxes[i]!== undefined && boxes[i]===boxes[i+4]&&boxes[i+4]===boxes[i+8]){
  			console.log('player ' + boxes[i] + ' wins!')
-		} else if(boxes[i]===boxes[i+2]&&boxes[i+2]==boxes[i+4]){
+		} else if(boxes[i]!== undefined && boxes[i]===boxes[i+2]&&boxes[i+2]==boxes[i+4]){
 
-			console.log	('player ' + boxes[i] + ' wins!')
+			console.log	(boxes[i] + ' wins!')
 		}
  	}
- 
+ }
 
-function flipCard(event){
-
-	var currentBox=Number(event.target.dataset.boxNumber);
-
-	 boxes[currentBox]=event.target.textContent;
+function flipCard(event, box) {
 
 	if(box.textContent===''){
-
-	   if (currentPlayer===1) {;
-			box.textContent='X'
-			box.classList.add('p1clicked')
-			checkForWinner();
-			currentPlayer+=1
-		} else {
-			box.textContent='O'
-		    box.classList.add('p2clicked')
-		    checkForWinner();
+	   if (currentPlayer===1) {
+			box.textContent='X';
+			box.classList.add('p1clicked');
+			currentPlayer+=1;
+		} else if (currentPlayer===2){
+			box.textContent='O';
+		    box.classList.add('p2clicked');
 		    currentPlayer -=1;
 		}
   	} else {
-
   		return;
   	}
+  	
+  	var currentBox=box.dataset.boxnumber;
+  	console.log(currentBox);
+	boxes[currentBox]=event.target.textContent;
+	console.log(boxes);
+
+	checkForWinner();
+
 	console.log (box.textContent+'clicked, player' + currentPlayer)
 }
 
 function getReady() {
 
-		all9Boxes.forEach(function(box){
-		box.addEventListener('click', function() {
-			flipCard(box)
+	all9Boxes.forEach(function(box){
+		box.addEventListener('click', function(event) {
+			flipCard(event, box)
 		});
 	});
 }
