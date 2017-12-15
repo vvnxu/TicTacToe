@@ -11,63 +11,75 @@ var box7=document.querySelector('.b7');
 var box8=document.querySelector('.b8');
 var box9=document.querySelector('.b9');
 var all9Boxes = document.querySelectorAll('.boxes');
-
+var winnerMsg=document.querySelector('h2');
 var currentPlayer=1;
 
-var boxes = [,,,,,,,,];
+var boxes = ['a','a','a','a','a','a','a','a','a'];
 
-function checkForWinner(){
+function checkForWinner(event,box){
+
+    var i=box.dataset.boxnumber;
+
+  	boxes[i]= event.target.textContent;
 
 	for(var i=0;i<3;i++){
-
-		if(boxes[i]!== undefined && boxes[i]===boxes[i+3] && boxes[i+3] === boxes[i+6]){
- 
-			console.log	(boxes[i] + ' wins!');
+		if(boxes[i]!== 'a' && boxes[i]===boxes[i+3] && boxes[i+3] === boxes[i+6]){
+		winnerMsg.textContent= boxes[i] + " wins";
+		winnerMsg.classList.add('show');
+		
 		}
 	}
 
-	for(var i=0;i<boxes.length +1;i+=3){
+	for(var i=0;i<boxes.length;i+=3){
+ 		if (boxes[i]!== 'a'&&boxes[i] === boxes[i+1] && boxes[i+1] === boxes[i+2]) {
 
- 		if (boxes[i]!== undefined&&boxes[i] === boxes[i+1] && boxes[i+1] === boxes[i+2]) {
- 			console.log(boxes[i] + ' wins!')
+ 		winnerMsg.textContent = boxes[i] + " wins";
+
+ 		winnerMsg.classList.add('show');
+ 		
  		}
  	}
 
- 	for(var i=0;i<3;i+=2){
-
- 		if(boxes[i]!== undefined && boxes[i]===boxes[i+4]&&boxes[i+4]===boxes[i+8]){
- 			console.log('player ' + boxes[i] + ' wins!')
-		} else if(boxes[i]!== undefined && boxes[i]===boxes[i+2]&&boxes[i+2]==boxes[i+4]){
-
-			console.log	(boxes[i] + ' wins!')
-		}
- 	}
+ 	for(i=0;i<3;i+=2){
+ 		if(boxes[i]!== 'a'&&boxes[i]===boxes[i+4]&&boxes[i+4]===boxes[i+8]){
+ 			winnerMsg.textContent= boxes[i] + " wins";
+ 		    winnerMsg.classList.add('show');
+ 		   
+		  }else if(boxes[i]!== 'a' && i>0 &&boxes[i]===boxes[i+2]&&boxes[i+2]===boxes[i+4] ){
+		  	winnerMsg.textContent= boxes[i] + " wins";
+ 		    winnerMsg.classList.add('show');
+ 		  
+		  }
+	}
+	if(boxes.indexOf('a')=== -1 && winnerMsg.textContent =='' ){
+		winnerMsg.textContent= " it's a tie!";
+		winnerMsg.classList.add('show');
+	}
  }
+
 
 function flipCard(event, box) {
 
-	if(box.textContent===''){
+	 if(box.textContent===''){
+
 	   if (currentPlayer===1) {
 			box.textContent='X';
 			box.classList.add('p1clicked');
 			currentPlayer+=1;
-		} else if (currentPlayer===2){
+			}else if (currentPlayer===2){
 			box.textContent='O';
 		    box.classList.add('p2clicked');
 		    currentPlayer -=1;
-		}
-  	} else {
+		 }else {
+
   		return;
+
+  	    }
   	}
-  	
-  	var currentBox=box.dataset.boxnumber;
-  	console.log(currentBox);
-	boxes[currentBox]=event.target.textContent;
-	console.log(boxes);
 
-	checkForWinner();
+	checkForWinner(event,box);
 
-	console.log (box.textContent+'clicked, player' + currentPlayer)
+	console.log (box.textContent +' clicked')
 }
 
 function getReady() {
@@ -80,17 +92,3 @@ function getReady() {
 }
 
 getReady();
-
-
-//if(player1 clicks){
-//	show cross box.style.background =x}else{
-//		show circle
-//	}
-//}
-
-//
-
-//for (var i=1,i<all9Boxes.length+1,i++){
-//	1,3,5,7,9 player1 gets to play
-//	2,4,6,8 player2 
-//}
