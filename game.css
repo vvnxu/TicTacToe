@@ -2,29 +2,27 @@ body{
 	background-color:pink;
 }
 h1{
-	font-size: -webkit-xxx-large;
+	font-size: 60px;
     color: #cc5353;
     text-align: center;
     padding: 20px;
-}
-
-
+    margin-left:-40px;
 }
 nav{
 	text-align: center;
 }
 
 .gameboxes{
-	width: 80%;
+	width: 70%;
     height: 80%;
-    margin: 0 auto;
+    margin: 0 250px;
 	padding:20px;
 }
 
 .boxes{
-	border:2px solid black;
+	border:5px solid black;
 	border-radius: 15px;
-	width: 30%;
+	width: 25%;
 	height:21vh;
 	text-align: center;
 	display:inline-block;
@@ -33,14 +31,14 @@ nav{
 }
 
 .p1clicked{
-	background:green;
+	
 	font-size:220px;
 	text-align:center;
 	margin-bottom:;
 }
 
 .p2clicked{
-	background:grey;
+	
 	font-size:220px;
 	text-align:center;
 
@@ -51,10 +49,5 @@ nav{
 	padding:20px;
 	margin:20px;
 	font-size:35px;
-	border:1px solid pink;
 	text-align:center;
-}
-
-.gameover{
-	pointer-events: none;
 }
